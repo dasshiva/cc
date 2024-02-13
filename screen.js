@@ -8,12 +8,13 @@ let looks = {
 export function print(text) {
     if (looks.lines > looks.current) {
         screen.value += text;
-        looks.current++;
+        if (text.trim()[text.length - 1] == '\n')
+            looks.current++;
     }
     else {
         screen.scroll(screen.clientWidth, screen.clientHeight);
         screen.value += text;
-        looks.current++;
+        if (text.trim()[text.length - 1] == '\n')
+            looks.current++;
     }
-    console.log(looks);
 }
